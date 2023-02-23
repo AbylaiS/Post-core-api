@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/{post}")
 public class PostController {
 
 
@@ -36,7 +36,7 @@ public class PostController {
         postService.createClient(post);
     }
 
-    @GetMapping("/getClientById")
+    @GetMapping("/{getClientById}")
     public void getClientById(@RequestParam String clientId){
         postService.getClientById(clientId);
     }
@@ -51,7 +51,7 @@ public class PostController {
         postService.getStatus(status);
     }
 
-    @PutMapping("/postId")
+    @PutMapping("/{postId}")
     public void updatePost(@PathVariable String postId, @RequestBody PostModel post){
 
         post.setPostId(postId);
@@ -60,7 +60,7 @@ public class PostController {
     }
 
 
-    @PutMapping("/clientId")
+    @PutMapping("/{clientId}")
     public void clientPost(@PathVariable String clientId, @RequestBody PostModel client){
 
         client.setClientId(String.valueOf(client));
@@ -73,7 +73,7 @@ public class PostController {
         postService.deletePostById(postById);
     }
 
-    @DeleteMapping("/clientId")
+    @DeleteMapping("/{clientId}")
     public void deleteClientById(@PathVariable String clientById){
         postService.deleteClientById(clientById);
     }
