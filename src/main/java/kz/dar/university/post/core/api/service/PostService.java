@@ -2,7 +2,6 @@ package kz.dar.university.post.core.api.service;
 
 import kz.dar.university.post.core.api.model.PostModel;
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -21,21 +20,11 @@ public class PostService implements IPostService {
        return postMap.put(post.getPostId(),post);
     }
 
-    @Override
-    public void createClient(PostModel post) {
-        postMap.put(post.getClientId(), post);
-    }
 
     @Override
     public HashMap<String, PostModel> getAllPosts() {
-        return postMap;
+        return (HashMap<String, PostModel>) postMap.values().stream().toList();
     }
-
-    @Override
-    public PostModel getClientById(String postId) {
-        return postMap.get(postId);
-    }
-
 
     @Override
     public PostModel getPostById(String postClient) {
@@ -50,18 +39,10 @@ public class PostService implements IPostService {
     @Override
     public void updatePost(PostModel post) {
 
-    }
-
-    @Override
-    public void updateClient(PostModel client) {
-
-    }
-
-    @Override
-    public void deleteClientById(String clientId) {
-
-        postMap.remove(clientId);
-
+    postMap.containsKey(post.getPostId());
+        {
+            postMap.put(post.getPostId(), post);
+        }
     }
 
     @Override
